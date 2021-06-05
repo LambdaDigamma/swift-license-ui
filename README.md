@@ -24,9 +24,11 @@ dependencies: [
 ## Documentation
 
 You can render the default user interface shipped with this package by using the `LicenseList` and its corresponding view model `LicensesViewModel` .
-Be aware that the default implementation is based on a SwiftUI `List`.
+The license terms are displayed in a `LicenseDetailView`.
 
-### Rendering a license list from `Settings.bundle`
+> Be aware that the default implementation is based on a SwiftUI `List` and needs to be embedded in a navigation context.
+
+### Rendering a license list from settings bundle
 
 To render licenses in your `Settings.bundle` generated with the [LicensePlist](https://github.com/mono0926/LicensePlist) package,
 you can display the list like that:

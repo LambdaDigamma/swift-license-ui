@@ -47,22 +47,28 @@ struct LicensesList_Previews: PreviewProvider {
     static var previews: some View {
         
         let licenses = [
-            LicenseItem(name: "AppScaffold", textLoader: {
+            LicenseItem(name: "AppScaffold (2.2.0)", textLoader: {
                 License.Apache2_0(
                     year: 2021,
                     copyrightHolder: "Lennart Fischer"
                 ).text
             }),
-            LicenseItem(name: "Prosemirror", textLoader: {
+            LicenseItem(name: "Prosemirror (1.0.0)", textLoader: {
                 License.MIT(
                     year: 2021,
                     copyrightHolder: "Lennart Fischer"
                 ).text
             }),
-            LicenseItem(name: "LicenseUI", textLoader: {
+            LicenseItem(name: "LicenseUI (1.0.0)", textLoader: {
                 License.MIT(
                     year: 2021,
                     copyrightHolder: "Lennart Fischer"
+                ).text
+            }),
+            LicenseItem(name: "Nuke (10.0.0)", textLoader: {
+                License.MIT(
+                    year: 2021,
+                    copyrightHolder: "Alex Grebenyuk"
                 ).text
             })
         ]

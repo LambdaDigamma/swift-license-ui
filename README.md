@@ -1,20 +1,19 @@
+![Screenshots](.assets/hero.png)
+
 # LicenseUI
 
 <p align="left">
 <img src="https://img.shields.io/apm/l/atomic-design-ui.svg">
 <img src="https://img.shields.io/badge/platforms-iOS-lightgrey.svg">
-<img alt="Swift" src="https://github.com/LambdaDigamma/swift-license-ui/actions/workflows/swift.yml/badge.svg">
 </p>
 
 This package parses your `Settings.bundle` for licenses generated with the [LicensePlist](https://github.com/mono0926/LicensePlist) package by Masayuki Ono.
-
-You can also provide package licenses manually by passing `LicenseItem` objects to the view model.
-
-Some of the most popular licenses (according to [opensource.org](https://opensource.org/licenses)) can be retrieved using the `License` enum.
+You can also provide package licenses manually by passing `LicenseItem` to the view model.
+Some of the most popular licenses can be retrieved using the `License` enum.
 
 ## Installation
 
-Install `LicenseUI` with Swift Package Manager
+Install `LicenseUI` with Swift Package Manager:
 
 ```swift
 dependencies: [
@@ -24,7 +23,18 @@ dependencies: [
 
 ## Documentation
 
+You can render the default user interface shipped with this package by using the `LicenseList` and its corresponding view model `LicensesViewModel` .
+Be aware that the default implementation is based on a SwiftUI `List`.
+
 ## Rendering a license list from `Settings.bundle`
+
+To render licenses in your `Settings.bundle` generated with the [LicensePlist](https://github.com/mono0926/LicensePlist) package,
+you can display the list like that:
+
+```swift
+// Render the list
+LicensesList(viewModel: LicensesViewModel())
+```
 
 ## Rendering a license list manually
 
@@ -45,9 +55,10 @@ Please see `CHANGELOG.md` for more information what has changed recently.
 
 Contributions are always welcome!
 
-## Credis
+## Credits
 
 - [Lennart Fischer](https://github.com/lambdadigamma)
+- [opensource.org](https://opensource.org/licenses)
 - [All Contributors](https://github.com/lambdadigamma/swift-license-ui/graphs/contributors)
 
 ## License

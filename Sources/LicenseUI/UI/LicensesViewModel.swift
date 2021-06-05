@@ -45,8 +45,6 @@ public class LicensesViewModel: ObservableObject {
                     })
                 }
             
-            print(licenses)
-            
         } catch let error as DecodingError {
             print(error)
             logger.error("Decoding Licenses failed: \(error.failureReason ?? "")")

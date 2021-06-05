@@ -18,7 +18,7 @@ public enum License {
     case GPL_3_0_only(description: String, year: Int, copyrightHolder: String)
     case MPL_2_0
     
-    var text: String {
+    public var text: String {
         
         switch self {
             case .MIT(let year, let copyrightHolder):

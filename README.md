@@ -8,8 +8,8 @@
 </p>
 
 This package parses your `Settings.bundle` for licenses generated with the [LicensePlist](https://github.com/mono0926/LicensePlist) package by Masayuki Ono.
-You can also provide package licenses manually by passing `LicenseItem` to the view model.
-Some of the most popular licenses can be retrieved using the `License` enum.
+You can also provide static licenses by passing `LicenseItem` to the view model or create your own `LicenseLoader` implementation.
+Some of the most popular license terms can be retrieved using the `License` enum.
 
 ## Installation
 
@@ -26,23 +26,61 @@ dependencies: [
 You can render the default user interface shipped with this package by using the `LicenseList` and its corresponding view model `LicensesViewModel` .
 Be aware that the default implementation is based on a SwiftUI `List`.
 
-## Rendering a license list from `Settings.bundle`
+### Rendering a license list from `Settings.bundle`
 
 To render licenses in your `Settings.bundle` generated with the [LicensePlist](https://github.com/mono0926/LicensePlist) package,
 you can display the list like that:
 
 ```swift
-// Render the list
 LicensesList(viewModel: LicensesViewModel())
 ```
 
-## Rendering a license list manually
+### Rendering a static license list or custom loader
 
-## Rendering a custom user interface
+To render a static list of licenses you can either use the `StaticLicenseLoader` or the convenience initializer: 
+
+```swift
+LicensesList(viewModel: LicensesViewModel(licenses: licenses))
+```
+
+Or use a custom loader:
+
+```swift
+LicensesList(viewModel: LicensesViewModel(loader: CustomLicenseLoader()))
+```
+
+### Rendering a custom user interface
+
+To render a custom user interface you can still use the `LicensesViewModel` to power it.
+The view model publishes the array `licenses` which you can use in your view. 
+Just make sure to call `viewModel.load()` at a given time to execute the provided loader.
+
+### Using custom license loader
+
+Licenses are being loaded by loaders conforming to the `LicenseLoader` protocol. 
+Loaders only need to implement a `load` method which returns an array of `LicenseItem`.
+The default `StaticLicenseLoader` implementation looks like this:
+
+```swift
+public class StaticLicenseLoader: LicenseLoader {
+
+    public let licenses: [LicenseItem]
+
+    public init(licenses: [LicenseItem] = []) {
+        self.licenses = licenses
+    }
+
+    public func load() -> [LicenseItem] {
+        return licenses
+    }
+
+}
+```
 
 ## Roadmap
 
 - [x] Implement `Settings.bundle` parsing
+- [x] Implement a static LicenseLoader
 - [x] Implement rendering license list and license terms
 - [x] Add the most popular licenses
 - [ ] Support more localizations

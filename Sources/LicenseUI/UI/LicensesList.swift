@@ -11,14 +11,10 @@ public struct LicensesList: View {
     
     @ObservedObject public var viewModel: LicensesViewModel
     
-    public let loadFromSettingsBundle: Bool
-    
     public init(
-        viewModel: LicensesViewModel = LicensesViewModel(),
-        loadFromSettingsBundle: Bool = true
+        viewModel: LicensesViewModel = LicensesViewModel()
     ) {
         self.viewModel = viewModel
-        self.loadFromSettingsBundle = loadFromSettingsBundle
     }
     
     public var body: some View {
@@ -32,9 +28,7 @@ public struct LicensesList: View {
             )
         }
         .onAppear {
-            if loadFromSettingsBundle {
-                viewModel.loadLicenses()
-            }
+            viewModel.loadLicenses()
         }
         .listStyle(InsetGroupedListStyle())
         .navigationBarTitle(NSLocalizedString("Licenses", tableName: nil, bundle: .module, value: "", comment: ""))
@@ -75,15 +69,13 @@ struct LicensesList_Previews: PreviewProvider {
         
         NavigationView {
             LicensesList(
-                viewModel: LicensesViewModel(licenses: licenses),
-                loadFromSettingsBundle: false
+                viewModel: LicensesViewModel(licenses: licenses)
             )
         }
         
         NavigationView {
             LicensesList(
-                viewModel: LicensesViewModel(licenses: licenses),
-                loadFromSettingsBundle: false
+                viewModel: LicensesViewModel(licenses: licenses)
             )
         }
         .environment(\.colorScheme, .dark)

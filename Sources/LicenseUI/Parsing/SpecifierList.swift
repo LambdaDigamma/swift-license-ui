@@ -10,7 +10,7 @@ import Foundation
 /// Represents a list of preference specifiers and
 /// it is needed for parsing the `.plist` files of
 /// your `Settings.bundle`.
-struct SpecifierList: Codable, Equatable {
+internal struct SpecifierList: Codable, Equatable {
     
     let specifiers: [PreferenceSpecifier]
     

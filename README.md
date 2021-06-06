@@ -17,7 +17,7 @@ Install `LicenseUI` with Swift Package Manager:
 
 ```swift
 dependencies: [
-    .package(name: "LicenseUI", url: "https://github.com/lambdadigamma/swift-license-ui", .upToNextMajor(from: "0.0.1")),
+    .package(name: "LicenseUI", url: "https://github.com/lambdadigamma/swift-license-ui", .upToNextMajor(from: "1.0.0")),
 ]
 ```
 

@@ -59,9 +59,9 @@ public class SettingsBundleLicenseLoader: LicenseLoader {
                 }
             
         } catch let error as DecodingError {
-            logger.error("Decoding Licenses failed: \(error.localizedDescription)")
+            logger.error("Decoding Licenses failed: \(String(describing: error), privacy: .public)")
         } catch {
-            logger.error("Loading Licenses failed: \(error.localizedDescription)")
+            logger.error("Loading Licenses failed: \(String(describing: error), privacy: .public)")
         }
         
         return []
@@ -96,9 +96,9 @@ public class SettingsBundleLicenseLoader: LicenseLoader {
             }
         } catch let error as DecodingError {
             print(error)
-            logger.error("Loading License failed: \(error.failureReason ?? "")")
+            logger.error("Loading License failed: \(String(describing: error), privacy: .public)")
         } catch {
-            logger.error("Loading License Text failed: \(error.localizedDescription)")
+            logger.error("Loading License Text failed: \(String(describing: error), privacy: .public)")
         }
         
         return ""
